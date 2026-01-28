@@ -1,0 +1,65 @@
+# Clone repository
+git clone https://github.com/okechukwukelechi046-a11y/algovault.git
+cd algovault
+
+# Run setup script
+./setup.sh
+
+# Or manual setup
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pytest tests/ -v
+
+Visualization Demos
+
+
+# Dijkstra's algorithm visualization
+python visualizations/dijkstra_visualizer.py
+
+# Sorting algorithm visualization
+python visualizations/sorting_visualizer.py
+
+# Graph algorithm visualization
+python visualizations/graph_visualizer.py
+
+
+Algorithm Categories
+Sorting Algorithms
+Comparison Sorts: QuickSort, MergeSort, HeapSort, TimSort
+
+Non-Comparison Sorts: CountingSort, RadixSort, BucketSort
+
+Specialized Sorts: IntroSort, ShellSort, CycleSort
+
+Search Algorithms
+Array Search: Binary Search, Interpolation Search, Exponential Search
+
+Graph Search: DFS, BFS, A*, Dijkstra, Bellman-Ford
+
+String Search: KMP, Rabin-Karp, Boyer-Moore, Z-Algorithm
+
+Graph Algorithms
+Shortest Path: Dijkstra, Bellman-Ford, Floyd-Warshall, A*
+
+Minimum Spanning Tree: Kruskal, Prim, Borůvka
+
+Network Flow: Ford-Fulkerson, Edmonds-Karp, Dinic
+
+Graph Theory: Topological Sort, Strongly Connected Components
+
+Dynamic Programming
+Classic Problems: Knapsack, LCS, LIS, Matrix Chain Multiplication
+
+Optimization: Bellman Equation, Value Iteration
+
+Advanced DP: Bitmask DP, Digit DP, DP on Trees
+
+Data Structures
+Basic: Arrays, Linked Lists, Stacks, Queues
+
+Trees: Binary Trees, BST, AVL, Red-Black, B-Trees
+
+Heaps: Binary Heaps, Fibonacci Heaps, Priority Queues
+
+Advanced: Bloom Filters, Skip Lists, Fenwick Trees
