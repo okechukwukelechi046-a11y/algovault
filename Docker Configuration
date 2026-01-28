@@ -1,0 +1,61 @@
+# Multi-stage build for algorithm repository
+FROM python:3.9-slim AS builder
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements
+COPY requirements.txt .
+COPY requirements-dev.txt .
+
+# Install Python dependencies
+RUN pip install --user --no-cache-dir -r requirements.txt
+RUN pip install --user --no-cache-dir -r requirements-dev.txt
+
+# Copy source code
+COPY algorithms/ ./algorithms/
+COPY data_structures/ ./data_structures/
+COPY visualizations/ ./visualizations/
+COPY tests/ ./tests/
+COPY benchmarks/ ./benchmarks/
+COPY playground/ ./playground/
+
+# Production stage
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy Python dependencies from builder
+COPY --from=builder /root/.local /root/.local
+
+# Copy application
+COPY --from=builder /app .
+
+# Create non-root user
+RUN useradd --create-home algouser
+USER algouser
+
+# Add .local/bin to PATH
+ENV PATH=/home/algouser/.local/bin:$PATH
+
+# Set Python path
+ENV PYTHONPATH=/app:$PYTHONPATH
+
+# Default command (run tests)
+CMD ["pytest", "tests/", "-v"]
+
+# Build and run instructions
+# docker build -t algovault .
+# docker run -it algovault
