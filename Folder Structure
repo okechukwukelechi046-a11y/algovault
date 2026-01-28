@@ -1,0 +1,21 @@
+algovault/
+├── algorithms/
+│   ├── sorting/           # Sorting algorithms
+│   ├── searching/         # Search algorithms
+│   ├── graph/            # Graph algorithms
+│   ├── dynamic/          # Dynamic programming
+│   ├── string/           # String algorithms
+│   ├── math/             # Mathematical algorithms
+│   └── cryptography/     # Cryptographic algorithms
+├── data_structures/
+│   ├── basic/            # Arrays, Linked Lists
+│   ├── trees/            # Trees, BST, AVL, etc.
+│   ├── heaps/            # Heaps, Priority Queues
+│   ├── hash/             # Hash tables, sets
+│   ├── graph/            # Graph representations
+│   └── advanced/         # Bloom filters, etc.
+├── benchmarks/           # Performance benchmarks
+├── visualizations/       # Interactive visualizations
+├── tests/               # Unit and integration tests
+├── docs/                # Documentation
+└── playground/          # Interactive playground
