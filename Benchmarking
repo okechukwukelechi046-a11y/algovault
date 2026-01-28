@@ -1,0 +1,10 @@
+from benchmarks.sorting_benchmark import SortingBenchmark
+
+benchmark = SortingBenchmark()
+results = benchmark.compare_algorithms(
+    sizes=[1000, 10000, 100000],
+    algorithms=['quick_sort', 'merge_sort', 'heap_sort', 'timsort']
+)
+
+# Generate plot
+benchmark.plot_results(results)
