@@ -1,0 +1,32 @@
+# 1. Clone repository
+git clone https://github.com/yourusername/algovault.git
+cd algovault
+
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+# 4. Set up environment
+export PYTHONPATH=$PYTHONPATH:$(pwd)
+
+# 5. Run tests
+pytest tests/ -v
+
+# 6. Run benchmarks
+python benchmarks/run_all_benchmarks.py
+
+# 7. Generate documentation
+cd docs && make html
+
+# 8. Start Jupyter notebook for interactive exploration
+jupyter notebook notebooks/
+
+# 9. Run visualizations
+python visualizations/dijkstra_visualizer.py
+
+# 10. Use the playground
+python playground/interactive.py
