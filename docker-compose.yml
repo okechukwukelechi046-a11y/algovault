@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  algovault:
+    build: .
+    container_name: algovault
+    volumes:
+      - ./algorithms:/app/algorithms
+      - ./data_structures:/app/data_structures
+      - ./tests:/app/tests
+      - ./benchmark_results:/app/benchmark_results
+    environment:
+      PYTHONPATH: /app
+    command: >
+      sh -c "pytest tests/ -v &&
+             python benchmarks/run_all_benchmarks.py"
+    networks:
+      - algo_network
+
+  jupyter:
+    image: jupyter/datascience-notebook:latest
+    container_name: algovault_notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/notebooks
+      - ./algorithms:/home/jovyan/algorithms
+      - ./data_structures:/home/jovyan/data_structures
+    environment:
+      JUPYTER_TOKEN: "algovault"
+    networks:
+      - algo_network
+
+  docs:
+    image: sphinxdoc/sphinx:latest
+    container_name: algovault_docs
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./docs:/docs
+      - ./algorithms:/docs/source/algorithms
+      - ./data_structures:/docs/source/data_structures
+    command: >
+      sh -c "cd /docs && make html &&
+             python -m http.server 8000 --directory /docs/_build/html"
+    networks:
+      - algo_network
+
+networks:
+  algo_network:
+    driver: bridge
+
+volumes:
+  benchmark_results:
