@@ -1,0 +1,66 @@
+# Run all tests
+pytest tests/ -v
+
+# Run specific test categories
+pytest tests/algorithms/ -v
+pytest tests/data_structures/ -v
+pytest tests/performance/ -v
+
+# Run with coverage
+pytest --cov=algorithms --cov=data_structures tests/
+
+# Run property-based tests
+pytest tests/property_based/ -v
+
+Performance Benchmarks
+Run comprehensive benchmarks:
+
+python benchmarks/run_all_benchmarks.py
+
+
+
+Example output:
+
+==========================================
+Algorithm Benchmark Results
+==========================================
+Sorting Algorithms:
+- QuickSort: 1000 elements - 0.45ms
+- MergeSort: 1000 elements - 0.52ms
+- TimSort: 1000 elements - 0.38ms
+
+Graph Algorithms:
+- Dijkstra (Eager): 1000 vertices - 12.3ms
+- Dijkstra (Lazy): 1000 vertices - 15.7ms
+- A* Search: 1000 vertices - 18.2ms
+
+
+Documentation
+Generate documentation:
+
+
+cd docs
+make html
+# Open docs/_build/html/index.html
+
+
+Or view online: Documentation
+
+Project Structure
+
+
+algovault/
+├── algorithms/              # Algorithm implementations
+│   ├── sorting/           # Sorting algorithms
+│   ├── searching/         # Search algorithms
+│   ├── graph/            # Graph algorithms
+│   ├── dynamic/          # Dynamic programming
+│   ├── string/           # String algorithms
+│   └── math/             # Mathematical algorithms
+├── data_structures/       # Data structure implementations
+├── visualizations/        # Interactive visualizations
+├── benchmarks/           # Performance benchmarks
+├── tests/               # Comprehensive test suite
+├── notebooks/           # Jupyter notebooks
+├── playground/          # Interactive playground
+└── docs/               # Documentation
